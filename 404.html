@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en-AU" data-theme="system">
+<html lang="en-AU">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -10,10 +10,8 @@
 (function () {
   try {
     var t = localStorage.getItem("harden-theme");
-    document.documentElement.setAttribute("data-theme", (t === "light" || t === "dark" || t === "system") ? t : "system");
-  } catch (e) {
-    document.documentElement.setAttribute("data-theme", "system");
-  }
+    if (t === "light" || t === "dark") document.documentElement.setAttribute("data-theme", t);
+  } catch (e) {}
 })();
 </script>
 </head>
@@ -34,13 +32,12 @@
         <a href="quote.html">Quote</a>
         <a href="quote.html#book">Book</a>
         <a href="contact.html">Contact</a>
-        <a class="btn btn-black" href="tel:+61413081407">Call 0413 081 407</a>
+        <a class="btn btn-black header-call" href="tel:+61413081407">Call 0413 081 407</a>
+        <button type="button" class="theme-btn" data-theme-toggle aria-label="Switch light/dark">
+          <svg class="icon-moon" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M21 15.46A9.14 9.14 0 0 1 8.54 3 7.5 7.5 0 1 0 21 15.46z"/></svg>
+          <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
+        </button>
       </nav>
-      <div class="theme-switch" role="group" aria-label="Colour theme">
-        <button type="button" data-theme-set="system" aria-pressed="true">System</button>
-        <button type="button" data-theme-set="light" aria-pressed="false">Light</button>
-        <button type="button" data-theme-set="dark" aria-pressed="false">Dark</button>
-      </div>
     </div>
   </header>
   <main id="main">
@@ -67,8 +64,8 @@
     </div>
   </footer>
   <div class="sticky-call">
-    <a class="btn btn-fire" href="tel:+61413081407">Call 0413 081 407</a>
-    <a class="btn btn-ghost-light" href="quote.html">Request a quote</a>
+    <a class="btn btn-fire" href="tel:+61413081407">Call Paul</a>
+    <a class="btn btn-ghost-light" href="quote.html">Quote</a>
   </div>
   <script src="js/site.js"></script>
 </body>

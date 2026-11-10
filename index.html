@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en-AU" data-theme="system">
+<html lang="en-AU">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -11,10 +11,8 @@
 (function () {
   try {
     var t = localStorage.getItem("harden-theme");
-    document.documentElement.setAttribute("data-theme", (t === "light" || t === "dark" || t === "system") ? t : "system");
-  } catch (e) {
-    document.documentElement.setAttribute("data-theme", "system");
-  }
+    if (t === "light" || t === "dark") document.documentElement.setAttribute("data-theme", t);
+  } catch (e) {}
 })();
 </script>
 </head>
@@ -35,26 +33,18 @@
         <a href="quote.html">Quote</a>
         <a href="#book">Book</a>
         <a href="contact.html">Contact</a>
-        <a class="btn btn-black" href="tel:+61413081407">Call 0413 081 407</a>
+        <a class="btn btn-black header-call" href="tel:+61413081407">Call 0413 081 407</a>
+        <button type="button" class="theme-btn" data-theme-toggle aria-label="Switch light/dark">
+          <svg class="icon-moon" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M21 15.46A9.14 9.14 0 0 1 8.54 3 7.5 7.5 0 1 0 21 15.46z"/></svg>
+          <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
+        </button>
       </nav>
-      <div class="theme-switch" role="group" aria-label="Colour theme">
-        <button type="button" data-theme-set="system" aria-pressed="true">System</button>
-        <button type="button" data-theme-set="light" aria-pressed="false">Light</button>
-        <button type="button" data-theme-set="dark" aria-pressed="false">Dark</button>
-      </div>
     </div>
   </header>
 
   <main id="main">
   <section class="hero">
-    <div class="hero-media" aria-hidden="true">
-      <picture>
-        <source type="image/avif" srcset="images/fire-ice-800.avif 800w, images/fire-ice-1440.avif 1440w" sizes="100vw">
-        <source type="image/webp" srcset="images/fire-ice-800.webp 800w, images/fire-ice-1440.webp 1440w" sizes="100vw">
-        <img src="images/fire-ice-800.webp" width="1440" height="810" alt="" fetchpriority="high" decoding="async">
-      </picture>
-      <div class="hero-overlay"></div>
-    </div>
+    <div class="hero-grid-bg" aria-hidden="true"></div>
     <div class="wrap">
       <div class="hero-copy">
         <p class="kicker">Harden, New South Wales</p>
@@ -71,19 +61,40 @@
   <section class="services reveal" id="work">
     <div class="wrap">
       <h2>The work we do</h2>
-      <div class="svc-grid">
-        <a class="svc" href="work.html"><span>01</span><h3>Electrical</h3></a>
-        <a class="svc" href="work.html"><span>02</span><h3>Heating</h3></a>
-        <a class="svc ice" href="work.html">
-          <div class="media-frame brand-tint">
+      <div class="bento">
+        <article class="tile tile-feature">
+          <div class="media-frame">
             <picture>
-              <source type="image/avif" srcset="images/split-system-480.avif 480w, images/split-system-960.avif 960w" sizes="(max-width: 900px) 100vw, 380px">
-              <source type="image/webp" srcset="images/split-system-480.webp 480w, images/split-system-960.webp 960w" sizes="(max-width: 900px) 100vw, 380px">
+              <source type="image/avif" srcset="images/split-system-480.avif 480w, images/split-system-960.avif 960w" sizes="(max-width: 900px) 100vw, 640px">
+              <source type="image/webp" srcset="images/split-system-480.webp 480w, images/split-system-960.webp 960w" sizes="(max-width: 900px) 100vw, 640px">
               <img src="images/split-system-480.webp" width="960" height="584" alt="Split system air conditioner." loading="lazy" decoding="async">
             </picture>
           </div>
-          <div class="svc-body"><span>03</span><h3>Cooling</h3></div>
-        </a>
+          <div class="tile-copy">
+            <span class="num">03</span>
+            <h3>Cooling</h3>
+            <p>Evaporative air-conditioning, split systems, and ducted reverse cycle.</p>
+          </div>
+        </article>
+        <article class="tile tile-elec">
+          <span class="num">01</span>
+          <h3>Electrical</h3>
+          <p>Switch boards, test &amp; tag, data &amp; phone, Level 2 accreditation, TV antennas, underground power and trenching, and stove and hot water repairs.</p>
+        </article>
+        <article class="tile tile-heat">
+          <span class="num">02</span>
+          <h3>Heating</h3>
+          <p>Ducted reverse cycle and split systems.</p>
+        </article>
+        <article class="tile tile-more">
+          <h3>Also listed</h3>
+          <p>Rural, commercial and industrial.</p>
+          <div class="trade-list">
+            <span>Rural</span>
+            <span>Commercial</span>
+            <span>Industrial</span>
+          </div>
+        </article>
       </div>
     </div>
   </section>
@@ -158,22 +169,36 @@
         </ol>
       </div>
       <div>
-        <form data-form="book">
-          <label for="b-name">Name<input id="b-name" type="text" name="b-name" autocomplete="name" required></label>
-          <label for="b-phone">Phone<input id="b-phone" type="tel" name="b-phone" autocomplete="tel" required></label>
-          <label for="b-day">Preferred day<input id="b-day" type="text" name="b-day" required></label>
-          <label for="b-window">Time window
-            <select id="b-window" name="b-window">
-              <option>Morning</option>
-              <option>Afternoon</option>
-              <option>Either</option>
-            </select>
-          </label>
-          <label class="full" for="b-notes">Anything we should know<textarea id="b-notes" name="b-notes"></textarea></label>
-          <button class="btn btn-black submit" type="submit">Book a visit</button>
+        <form class="book-widget" data-form="book" novalidate>
+          <div class="widget-block">
+            <p class="widget-label" id="book-day-label">Day</p>
+            <div class="date-scroller" role="radiogroup" aria-labelledby="book-day-label" data-book-days></div>
+            <p class="field-error" data-error="day" hidden>Pick a weekday.</p>
+          </div>
+          <div class="widget-block">
+            <p class="widget-label" id="book-time-label">Time</p>
+            <div class="pill-row" role="radiogroup" aria-labelledby="book-time-label" data-book-times>
+              <button type="button" class="pill" role="radio" aria-checked="false" data-value="Morning">Morning</button>
+              <button type="button" class="pill" role="radio" aria-checked="false" data-value="Midday">Midday</button>
+              <button type="button" class="pill" role="radio" aria-checked="false" data-value="Afternoon">Afternoon</button>
+            </div>
+            <p class="field-error" data-error="time" hidden>Pick a time window.</p>
+          </div>
+          <div class="widget-block">
+            <p class="widget-label" id="book-job-label">Type of work</p>
+            <div class="pill-row" role="radiogroup" aria-labelledby="book-job-label" data-book-jobs></div>
+          </div>
+          <div class="book-fields">
+            <label for="b-name">Name<input id="b-name" type="text" name="b-name" autocomplete="name"></label>
+            <label for="b-phone">Phone<input id="b-phone" type="tel" name="b-phone" autocomplete="tel"></label>
+            <p class="field-error full" data-error="phone" hidden>Enter a phone number.</p>
+            <label class="full" for="b-notes">Anything we should know<textarea id="b-notes" name="b-notes"></textarea></label>
+          </div>
+          <p class="book-summary" data-book-summary aria-live="polite">Choose a day and time</p>
+          <button class="btn btn-fire book-submit" type="submit">Book a visit</button>
         </form>
         <div class="thanks" hidden tabindex="-1">
-          <p>Thank you. Paul will be in touch.</p>
+          <p>Thank you. Paul will be in touch to confirm the time.</p>
         </div>
       </div>
     </div>
@@ -219,8 +244,8 @@
     </div>
   </footer>
   <div class="sticky-call">
-    <a class="btn btn-fire" href="tel:+61413081407">Call 0413 081 407</a>
-    <a class="btn btn-ghost-light" href="#quote">Request a quote</a>
+    <a class="btn btn-fire" href="tel:+61413081407">Call Paul</a>
+    <a class="btn btn-ghost-light" href="#quote">Quote</a>
   </div>
   <script src="js/site.js"></script>
 </body>
