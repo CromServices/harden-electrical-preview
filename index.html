@@ -45,7 +45,7 @@
   <main id="main">
   <section class="hero">
     <div class="hero-grid-bg" aria-hidden="true"></div>
-    <div class="wrap">
+    <div class="wrap hero-layout">
       <div class="hero-copy">
         <p class="kicker">Harden, New South Wales</p>
         <h1>Electrical, heating and cooling for Harden.</h1>
@@ -55,6 +55,18 @@
           <a class="btn btn-ghost-light" href="tel:+61413081407">Call 0413 081 407</a>
         </div>
       </div>
+      <div class="need-card">
+        <div class="need-head">
+          <h2>What do you need?</h2>
+          <span class="google-badge">5.0 on Google</span>
+        </div>
+        <div class="need-grid">
+          <a class="need-tile" href="#svc-electrical">Electrical</a>
+          <a class="need-tile" href="#svc-heating">Heating</a>
+          <a class="need-tile" href="#svc-cooling">Cooling</a>
+        </div>
+        <a class="btn btn-fire" href="tel:+61413081407">Call Paul</a>
+      </div>
     </div>
   </section>
 
@@ -62,7 +74,7 @@
     <div class="wrap">
       <h2>The work we do</h2>
       <div class="bento">
-        <article class="tile tile-feature">
+        <article class="tile tile-feature" id="svc-cooling">
           <div class="media-frame">
             <picture>
               <source type="image/avif" srcset="images/split-system-480.avif 480w, images/split-system-960.avif 960w" sizes="(max-width: 900px) 100vw, 640px">
@@ -76,23 +88,23 @@
             <p>Evaporative air-conditioning, split systems, and ducted reverse cycle.</p>
           </div>
         </article>
-        <article class="tile tile-elec">
+        <article class="tile tile-elec" id="svc-electrical">
           <span class="num">01</span>
           <h3>Electrical</h3>
           <p>Switch boards, test &amp; tag, data &amp; phone, Level 2 accreditation, TV antennas, underground power and trenching, and stove and hot water repairs.</p>
-        </article>
-        <article class="tile tile-heat">
-          <span class="num">02</span>
-          <h3>Heating</h3>
-          <p>Ducted reverse cycle and split systems.</p>
-        </article>
-        <article class="tile tile-more">
-          <h3>Also listed</h3>
-          <p>Rural, commercial and industrial.</p>
           <div class="trade-list">
             <span>Rural</span>
             <span>Commercial</span>
             <span>Industrial</span>
+          </div>
+        </article>
+        <article class="tile tile-heat" id="svc-heating">
+          <span class="num">02</span>
+          <h3>Heating</h3>
+          <p>Ducted reverse cycle and split systems.</p>
+          <div class="trade-list">
+            <span>Ducted Reverse Cycle</span>
+            <span>Split Systems</span>
           </div>
         </article>
       </div>
@@ -221,12 +233,6 @@
     </div>
   </section>
 
-  <section class="reviews reveal">
-    <div class="wrap">
-      <h2>Google reviews</h2>
-      <p class="rating">5.0 stars from 1 Google review</p>
-    </div>
-  </section>
   </main>
 
   <footer class="site">
