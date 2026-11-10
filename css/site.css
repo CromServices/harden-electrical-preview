@@ -31,6 +31,7 @@
   --about-copy: #D0D4DE;
   --footer-copy: #C8CDD8;
   --wordmark-sub: #284090;
+  --header-h: 73px;
   color-scheme: light;
 }
 
@@ -75,6 +76,14 @@ html[data-theme="light"] {
 * { box-sizing: border-box; margin: 0; padding: 0; }
 html, body { background: var(--mist); color: var(--ink); }
 html { overflow-x: clip; }
+@media (prefers-reduced-motion: no-preference) {
+  html { scroll-behavior: smooth; }
+}
+section,
+.tile,
+[id] {
+  scroll-margin-top: calc(var(--header-h, 104px) + 16px);
+}
 body {
   font-family: Manrope, "Segoe UI", sans-serif;
   font-size: 18px;
@@ -617,6 +626,7 @@ footer.site a { color: inherit; }
 }
 
 @media (max-width: 900px) {
+  :root { --header-h: 104px; }
   .wrap { width: min(1180px, calc(100% - 32px)); }
   h1 { font-size: 32px; }
   .util { display: none; }
