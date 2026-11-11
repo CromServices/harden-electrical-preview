@@ -164,14 +164,15 @@
           <label for="q-phone">Phone<input id="q-phone" type="tel" name="phone" autocomplete="tel" required></label>
           <label for="q-email">Email<input id="q-email" type="email" name="email" autocomplete="email" required></label>
           <label for="q-suburb">Suburb or address<input id="q-suburb" type="text" name="suburb" required></label>
-          <label class="full" for="q-type">Type of work
-            <select id="q-type" name="type">
-              <option>Electrical</option>
-              <option>Heating</option>
-              <option>Cooling</option>
-              <option>Other</option>
-            </select>
-          </label>
+          <fieldset class="full type-field">
+            <legend id="q-type">Type of work</legend>
+            <div class="pill-row">
+              <label class="pill"><input type="radio" name="type" value="Electrical" checked> Electrical</label>
+              <label class="pill"><input type="radio" name="type" value="Heating"> Heating</label>
+              <label class="pill"><input type="radio" name="type" value="Cooling"> Cooling</label>
+              <label class="pill"><input type="radio" name="type" value="Other"> Other</label>
+            </div>
+          </fieldset>
           <label class="full" for="q-details">A short description<textarea id="q-details" name="details" required></textarea></label>
           <label class="full" for="q-when">Preferred time to talk<input id="q-when" type="text" name="when"></label>
           <button class="btn btn-fire submit" type="submit">Request a quote</button>
